@@ -1,11 +1,12 @@
+🌍 Live demo: https://days-left-in-year.onrender.com
+# This is a simple showcase showing how many days are left in the year.
 ## How to run
+
+```bash
 pip install -r requirements.txt
 python app.py
 
-
-
-
-Project Roadmap – Day of Your Life
+### Project Roadmap – Day of Your Life
 1. Basic Flask Setup
 Create Flask application (app.py)
 Create basic route /
