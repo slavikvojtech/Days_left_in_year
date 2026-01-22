@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Day of your life</title>
+    <meta charset="UTF-8">
+    <title>Days Left in Year</title>
+
+    <!-- Mobile scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             margin: 0;
@@ -11,64 +15,92 @@
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
+            background: #f7f7f7;
+        }
+
+        .container {
+            padding: 20px;
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .day-info {
+            font-size: 18px;
+            opacity: 0.7;
+            margin-bottom: 20px;
         }
 
         .dots {
             display: grid;
             grid-template-columns: repeat(30, 1fr);
             gap: 6px;
+            justify-items: center;
         }
 
         .dot {
             width: 30px;
-            height: 30px;
+            aspect-ratio: 1 / 1;
             background: #ccc;
             border-radius: 50%;
-
         }
 
         .dot.filled {
             background: #2ecc71;
         }
 
-        .day-info {
-            font-size: 20px;
-            opacity: 0.7;
-            /* jemnější text (volitelné) */
+        /* Mobile */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 26px;
+            }
+
+            .day-info {
+                font-size: 14px;
+            }
+
+            .dots {
+                grid-template-columns: repeat(15, 1fr);
+                gap: 4px;
+            }
+
+            .dot {
+                width: 16px;
+            }
         }
     </style>
-
 </head>
 
 <body>
+    <div class="container">
+        <h1>{{ days_left }} days left in year {{ year }}</h1>
 
-    <body>
-        <div>
-            <h1>{{ days_left }} days left in year: {{ year }}</h1>
-            <p class="day-info">
-                Day of year: {{ day_of_year }} / {{ days_in_year }}
-            </p>
+        <p class="day-info">
+            Day of year: {{ day_of_year }} / {{ days_in_year }}
+        </p>
 
-            <div class="dots">
-                {% for i in range(1, days_in_year +1) %}
+        <div class="dots">
+            {% for i in range(1, days_in_year + 1) %}
                 <div class="dot {% if i <= day_of_year %}filled{% endif %}"></div>
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
+    </div>
 
-        <!-- Visitor counter -->
-        <div style="
+    <!-- Visitor counter -->
+    <div style="
         position: fixed;
         bottom: 10px;
         right: 10px;
         font-size: 12px;
         color: #888;
     ">
-            Visitors:
-            <img src="https://visitor-badge.laobi.icu/badge?page_id=days-left-in-year" alt="Visitors">
-        </div>
-    </body>
-
+        Visitors:
+        <img src="https://visitor-badge.laobi.icu/badge?page_id=days-left-in-year"
+             alt="Visitors">
+    </div>
 </body>
-
 </html>
