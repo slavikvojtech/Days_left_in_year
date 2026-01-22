@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Day of your life</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .dots {
+            display: grid;
+            grid-template-columns: repeat(30, 1fr);
+            gap: 6px;
+        }
+
+        .dot {
+            width: 30px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 50%;
+
+        }
+
+        .dot.filled {
+            background: #2ecc71;
+        }
+
+        .day-info {
+            font-size: 20px;
+            opacity: 0.7;
+            /* jemnější text (volitelné) */
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <body>
+        <div>
+            <h1>{{ days_left }} days left in year: {{ year }}</h1>
+            <p class="day-info">
+                Day of year: {{ day_of_year }} / {{ days_in_year }}
+            </p>
+
+            <div class="dots">
+                {% for i in range(1, days_in_year +1) %}
+                <div class="dot {% if i <= day_of_year %}filled{% endif %}"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+
+</body>
+
+</html>
